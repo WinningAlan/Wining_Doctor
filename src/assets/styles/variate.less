@@ -1,0 +1,45 @@
+/* less 常用函数、全局变量 */
+/* 文字两端对齐 */
+.textJustify(@width: 100px, @height: 32px) {
+    width: @width;
+    text-align-last: justify;
+    /* 兼容IE */
+    text-align: justify;
+    text-justify: inter-ideograph;
+    line-height: @height;
+    height: @height;
+ }
+ /* 文字超出显示省略号 */
+ .textEllipsis(@width: 100px){
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: @width;
+    white-space: nowrap;
+ }
+ /*指标小标识*/
+ .wordIcon(@content:'胸',@bgColor:#ff8a5c,@color:#fff,@w:20px) {
+    display: inline-block;
+    width:@w;
+    height: @w;
+    line-height: @w;
+    position: relative;
+    border-radius: 2px;
+    font-size: 12px;
+    background-color: @bgColor;
+    margin-right:10px;
+    &::after{
+        display: inline-block;
+        color:@color;
+          width:@w;
+          height: @w;
+          text-align: center;
+          content: @content;
+    }
+ }
+/* 主要背景色 */
+@mainBg:#DFE7F5;
+@grayBg:#eee;
+/* 控件背景色 */
+@controlBg: #F3F5F9;
+@blueMain:#0071e7;
+@wordColor:#000622;

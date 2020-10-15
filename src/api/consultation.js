@@ -1,0 +1,45 @@
+import {ajax as A} from "../utils/ajax";
+export default {
+    //获取会诊的的地点字典量
+    getConSite:(params)=>A(params,"/api/v1/Consultation/AllConsultationLocation","get"),
+    //获取所有会诊类别字典数据
+    getConType:(params)=>A(params,"/api/v1/Consultation/AllConsultationType",'get'),
+    //获取所有会诊目的字典数据
+    getConTarget:(params)=>A(params,"/api/v1/Consultation/AllConsultationTarget",'get'),
+    //获取所有会诊医院字典数据
+    getConAllHospital:(params)=>A(params,"/api/v1/Consultation/AllHospital","get"),
+    //获取所有的会诊科室
+    getConAllDepartment:(params)=>A(params,"/api/v1/Consultation/AllDepartment","get"),
+    //保存数据
+    addConsultation:(params)=>A(params,"/api/v1/Consultation/CreateOrUpdateConsultation","post"),
+    //提交数据
+    submitConsultation:(params)=>A(params,"/api/v1/Consultation/ApplyConsultation","post"),
+    //获取会诊的单条信息
+    getConsultationInfo:(params)=>A(params,"/api/v1/Consultation/ObtainConsultationInfo",'post'),
+    //获取会诊历史的详情记录
+    getConHisDetails:(params)=>A(params,"/api/v1/Consultation/ObtainConsultations","post"),
+    //获取会诊的历史列表
+    getConHisList:(params)=>A(params,"/api/v1/Consultation/ObtainPatientInHospitals",'post'),
+    //获取要签到的科室
+    getSingIn:(params)=>A(params,"/api/v1/Consultation/ObtainToCheckInDetails",'get'),
+    //搜索下拉科室的人员名称
+    searchUser:(params)=>A(params,"/api/v1/Consultation/ObtainDoctorsByDepartmentCode","post"),
+    //签到信息提交
+    subSignIn:(params)=>A(params,"/api/v1/Consultation/CheckInConsultationDetail","post"),
+    //会诊取消
+    cancelCon:(params)=>A(params,"/api/v1/Consultation/CancelConsultation",'get'),
+    //评价会诊
+    evaluateCon:(params)=>A(params,'api/v1/Consultation/EvaluateConsultation','post'),
+    //删除会诊
+    delCon:(params)=>A(params,"/api/v1/Consultation/DeleteConsultation",'get'),
+    //获取会诊的反馈信息
+    getConFeedBack:(params)=>A(params,"/api/v1/Consultation/ObtainConsultationFeedBackInfo",'get'),
+    //结束会诊
+    endCon:(params)=>A(params,"/api/v1/Consultation/EndConsultation",'get'),
+    //获取评分详情
+    getGradeDetail:(params)=>A(params,"/api/v1/Consultation/ObtainEvaluationInfo",'get'),
+    //获取会诊费用
+    getConFee:(params)=>A(params,"/api/v1/Consultation/GetConsultationFee",'get'),
+    //根据会诊的类型返回会诊的收费项集合
+    getFeeByTypeCodeList:(params)=>A(params,"/api/v1/Consultation/GetAllConsultationFeeByTypeCode",'get')
+}

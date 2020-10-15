@@ -1,0 +1,16 @@
+<svg width="27px" height="27px" viewBox="0 0 27 27" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<linearGradient x1="50%" y1="0%" x2="50%" y2="96.8117775%" id="linearGradient-1">
+<stop stop-color="#FFE26B" offset="0%"></stop>
+<stop stop-color="#E4B808" offset="100%"></stop>
+</linearGradient>
+</defs>
+<g id="1217" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+<g id="首页-copy" transform="translate(-179.000000, -538.000000)">
+<g id="分组-20" transform="translate(179.000000, 538.000000)">
+<path d="M2,0 L25,0 C26.1045695,-2.02906125e-16 27,0.8954305 27,2 L27,25 C27,26.1045695 26.1045695,27 25,27 L2,27 C0.8954305,27 1.3527075e-16,26.1045695 0,25 L0,2 C-1.3527075e-16,0.8954305 0.8954305,2.02906125e-16 2,0 Z" id="Rectangle-35" fill="url(#linearGradient-1)"></path>
+<path d="M7.456,19 L7.456,7.144 L9.824,7.144 L9.824,19 L7.456,19 Z M12.736,19 L12.736,7.144 L15.104,7.144 L15.104,19 L12.736,19 Z M18.016,19 L18.016,7.144 L20.384,7.144 L20.384,19 L18.016,19 Z" id="III" fill="#FFFFFF"></path>
+</g>
+</g>
+</g>
+</svg>

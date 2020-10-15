@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>合并形状</title>
+    <desc>Created with Sketch.</desc>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="首页-患者主页-呼吸机-copy" transform="translate(-17.000000, -461.000000)" fill="#8599C0">
+            <path d="M27,461 L27,467 L29,465.736868 L31,467 L31,461 L33,461 C34.1045695,461 35,461.895431 35,463 L35,477 C35,478.104569 34.1045695,479 33,479 L19,479 C17.8954305,479 17,478.104569 17,477 L17,463 C17,461.895431 17.8954305,461 19,461 L22.0105202,461 L27,461 Z M21,474 L21,475 L31,475 L31,474 L21,474 Z M21,471 L21,472 L31,472 L31,471 L21,471 Z" id="合并形状"></path>
+        </g>
+    </g>
+</svg>

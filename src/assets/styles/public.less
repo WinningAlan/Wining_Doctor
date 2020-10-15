@@ -1,0 +1,642 @@
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+}
+.left14{
+margin-left: 1.1em;
+}
+.blue{
+  color: blue;
+}
+.font14 {
+  font-size: 14px;
+}
+.font16 {
+  font-size: 16px;
+}
+.bold {
+  font-weight: bold;
+}
+.level1 {
+  color: #ef6f6f;
+}
+.level2  {
+  color: #ef9541;
+}
+.level3  {
+  color: #efc92c;
+}
+.level4{
+  color: #8abb65;
+}
+.level5 {
+  color: #8abb65;
+}
+.xiong{
+  .wordIcon('胸',#ff8a5c)
+}
+.cu{
+  .wordIcon('卒',#ffc15c)
+}
+.chuang{
+  .wordIcon('创',#5caaff)
+}
+.yun{
+  .wordIcon('孕',#f08740)
+}
+.wu{
+  .wordIcon('无',#7295c8)
+}
+.du{
+  .wordIcon('毒',#df76ff)
+}
+.ta{
+  .wordIcon('他',#5c6fff)
+}
+.qun{
+  .wordIcon('群',#ff5c5c)
+}
+.min{
+  .wordIcon('敏',#ff8a5c)
+}
+.lv{
+  .wordIcon('绿',#5bc970)
+}
+.xin{
+  .wordIcon('新',#5db730)
+}
+.qiang{
+  .wordIcon('抢',#F52C2C)
+}
+.liu{
+  .wordIcon('留',#E4860A)
+}
+.men{
+  .wordIcon('门',#5DB730)
+}
+.wei{
+  .wordIcon('危',#C73535)
+}
+.zhong{
+  .wordIcon('重',#EB3838)
+}
+.shu{
+  .wordIcon('术',#FF9321)
+}
+.man{
+  .wordIcon('慢',#c73fc0)
+}
+.adviceIcon{
+  display: inline-block;
+  padding:0 5px;
+  // width: 20px;
+  // height: 20px;
+  margin-right: 5px;
+  color: #0071e7;
+  text-align: center;
+  background:rgba(0, 113, 231, 0.1),;
+
+}
+.button {
+  float: left;
+  margin-right: 8px;
+  background: rgba(0, 113, 231, 0.1);
+  border: 1px solid rgba(0, 113, 231, 0.3);
+  border-radius: 2px;
+  width: 90px;
+  height: 30px;
+  line-height: 30px;
+  color: @blueMain;
+  text-align: center;
+  cursor: pointer;
+  &.last {
+    background: @blueMain;
+    color: #fff;
+  }
+  > img {
+    margin-bottom: 2px;
+    margin-right: 5px;
+  }
+}
+.home-public{
+  height: 100%;
+  .header{
+    height: 32px;
+    line-height: 32px;
+    h2{
+        float: left;
+        font-size: 15px;
+    }
+    >span{
+      float: left;
+      margin: 0 20px 0 100px;
+    }
+    .el-select{
+      float: left;
+      .el-input__inner{
+        width: 130px;
+        background: #f2f2f2;
+        border-radius: 2px;
+        border: none;
+      }
+    }
+    .add{
+        float: right;
+        width: 20px;
+        height: 20px;
+        margin-top: 6px;
+        margin-left: 1em;
+        color: #0071e7;
+        cursor: pointer;
+    }
+}
+.table-main{
+  width: 100%;
+  height: ~"calc(100% - 32px)";
+  overflow: auto
+}
+}
+a.color{
+  
+  >li{
+    color: #fff!important;
+    background: #0071E7!important;
+    // color: #409EFF!important;
+
+  }
+}
+.flex {
+  display: flex;
+}
+.el-header{padding: 0;}
+.sidebar {
+  background:#304156;
+  border-right: solid 1px #e6e6e6;
+
+}
+.el-menu{
+  border-right: none;
+  // height: 100%;
+  overflow-y: auto;
+}
+// 表格操作的样式
+.operation {
+  cursor: pointer;
+  // height: 47px;
+  height: 100%;
+  // line-height: 47px;
+  color: #1989fa;
+
+  >span {
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 20px;
+    height: 100%;
+    // line-height: 47px;
+    &:last-child{
+      margin-right: 0;
+    }
+    &:hover {
+      color: #0f80ed;
+      font-weight: bold;
+    }
+  }
+}
+
+// 时间控件更改样式
+.my-input-time {
+   .el-input__inner {
+    background: #f2f2f2;
+    border: none;
+
+  }
+
+   .el-date-editor--datetime .el-input__inner {
+    width: 190px;
+  }
+
+   .el-date-editor--datetimerange.el-input__inner {
+
+    width: 310px;
+
+  }
+}
+.el-date-editor--time-select{
+  width: 115px!important;
+}
+// 数字输入框公共样式
+.my-input-nimber  .el-input-number {
+  width: 110px;
+  background: #f2f2f2;
+  border-radius: 2px;
+  border: none;
+
+  .el-input__inner {
+    width: 110px !important;
+  }
+
+  .el-input-number__decrease,
+  .el-input-number__increase {
+    background: #c7e0ff;
+    border-radius: 2px 0px 0px 2px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #1989fa;
+    border: none;
+  }
+}
+.el-main{
+  padding: 10px 20px;
+}
+// 表格操作hover显示的公共样式
+.edit-more {
+  min-width: 98px;
+  padding: 10px 0;
+
+  p {
+    color: #4A90E2;
+    padding: 0 10px;
+    height: 36px;
+    line-height: 36px;
+    cursor: pointer;
+  }
+
+  p:hover {
+    font-weight: bold;
+    background: rgba(15, 128, 237, .1);
+  }
+}
+
+.edit-more-btn {
+  position: relative;
+  cursor: pointer;
+  color: #0F80ED;
+
+  .el-icon-caret-bottom {
+    position: absolute;
+    color: #000;
+    font-size: 14px;
+    top: 4px;
+    right: 0px;
+  }
+}
+
+// messageBox样式重置 
+
+.el-message-box {
+  width: 450px !important;
+
+  .el-message-box__header {
+    height: 30px;
+    font-size: 16px;
+  }
+
+  .el-message-box__content {
+    height: 60px;
+    text-align: center;
+
+    .el-message-box__message {
+      float: left;
+      padding-left: 20px;
+
+      p {
+        line-height: 40px;
+        font-size: 15px;
+        color: #000000;
+      }
+    }
+
+    .el-message-box__status {
+      font-size: 36px !important;
+      position: static;
+      float: left;
+      margin: 6px 0px 0 30px;
+      transform: translateY(0);
+    }
+  }
+
+  .el-message-box__btns {
+    .el-button {
+      padding: 9px 27px;
+      font-size: 16px;
+    }
+  }
+}
+
+.el-table {
+  margin-top: 15px;
+
+   .el-table__empty-block {
+    min-height: 0px;
+    display: none;
+  }
+
+  tr th {
+    background: #F4F8FC;
+    // background: #4071ff;
+    // opacity: 0.08;
+    height: 50px;
+    font-size: 15px;
+    //color: #9BA8BB;
+    color: #2f3344;
+    font-weight: 700;
+
+  }
+
+  tr td {
+    height: 48px;
+    padding: 0;
+    font-size: 14px;
+    //color: #333333;
+    color:@wordColor;
+
+    .cell {
+
+      .cell-operation {
+        font-size: 14px;
+        cursor: pointer;
+        color: #0F80ED;
+      }
+    }
+  }
+}
+// 重置el-tabs样式
+.el-tabs {
+  width: 100%;
+  // min-width: 1360px;
+  height: 100%;
+  box-sizing: border-box;
+  box-shadow: none;
+  border: none;
+  .el-tabs__header{
+    background: #f2f2f2;
+    height: 48px;
+  }
+
+  .el-tabs__item {
+    height: 48px;
+    line-height: 48px;
+    border: none;
+    width: 106px;
+    padding: 0 !important;
+    text-align: center;
+    background: #e3e3e4;
+    border-radius: 0px 2px 0px 0px;
+    font-size: 15px;
+    color: #333333;
+  }
+
+  .el-tabs__item.is-active {
+    background: #fff;
+    color: #0071e7;
+    font-weight: bold;
+
+  }
+}
+  .el-table::before {
+    background-color: #ddd;
+  }
+
+  // button按钮样式
+  .buttonStyle {
+    width: 90px;
+    height: 30px;
+    right: 10px;
+    // margin-top: 6px;
+    background: #ffffff;
+    border: 1px solid @blueMain;
+    border-radius: 3px;
+    font-size: 14px;
+    color: @blueMain;
+    cursor: pointer;
+    text-align: center;
+    line-height: 32px;
+  }
+  // 
+  .show2Line { 
+    overflow : hidden; 
+    text-overflow: ellipsis; 
+    display: -webkit-box; 
+    -webkit-line-clamp: 2; 
+    -webkit-box-orient: vertical; 
+    -webkit-line-clamp:2; 
+    white-space: normal;
+    max-height: 40.2px;
+    }
+// 图表小图标
+.icon-line {
+  background: url("../../assets/imges/line.png") no-repeat center;
+}
+.icon-bar {
+  background: url("../../assets/imges/bar.png") no-repeat center;
+}
+.icon-pie {
+  background: url("../../assets/imges/pie.png") no-repeat center;
+}
+.icon-lineBar {
+  background: url("../../assets/imges/lineBar.png") no-repeat center;
+}
+//////
+.icon-healBar {
+  background: url("../../assets/imges/healBar.png") no-repeat center;
+}
+.icon-lineHealBar {
+  background: url("../../assets/imges/lineHealBar.png") no-repeat center;
+}
+.icon-textFigure {
+  background: url("../../assets/imges/textFigure.png") no-repeat center;
+}
+// 自定义弹框
+.newProp {
+  min-width: 0 !important;
+  .el-checkbox {
+    margin-left: 0;
+    margin-bottom: 5px;
+  }
+  .el-checkbox + .el-checkbox {
+    margin-left: 0;
+  }
+  .checkContent{
+    max-height: 300px;
+    overflow: auto;
+  }
+  .columnBtn{
+    text-align: center; 
+    margin: 0;
+    margin-top:10px;
+    >span{
+      cursor: pointer;
+    }
+    >span:nth-child(1){
+      margin-right:20px;
+    }
+    >span:nth-child(2){
+      color:@blueMain;
+    }
+  }
+}
+// “新”标识
+.new {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 15px;
+  height: 15px;
+  background-color: #5db730;
+  font-size: 12px;
+  &::before {
+    display: inline-block;
+    content: "新";
+    position: absolute;
+    color: #fff;
+    width:12px;
+    height: 12px;
+    text-align: center;
+    line-height: 12px;
+    left:1.5px;
+    top:1.5px;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    display: inline-block;
+    top:15px;
+    border-width: 7px;
+    left:0;
+    border-color: #5db730 #fff #fff #fff;
+    border-style: solid;
+  }
+}
+// 医嘱申请状态
+.bg {
+  display: block;
+  text-align: center;
+  border-radius: 2.4px;
+  font-size: 13px;
+}
+.bg1,.bg0 {
+  background: #f5f5f5;
+  color: rgba(47, 51, 68, 0.4);
+}
+.bg2 {
+  background: #e9fade;
+  color: #5db730;
+}
+.bg3 {
+  background: #e9fade;
+  color: #5db730;
+}
+.bg4 {
+  background: #f5f5f5;
+  color: rgba(47, 51, 68, 0.4);
+}
+.bg5 {
+  background: rgba(0, 113, 231, 0.1);
+  color: #0071e7;
+}
+.bg6 {
+  background: #fff3de;
+  color: #e4860a;
+}
+.bg7 {
+  background: #ffeff0;
+  color: #f52c2c;
+}
+.icon-drug {
+  .wordIcon("药", rgba(0, 113, 231, 0.1), #0071e7);
+}
+.icon-inspect {
+  .wordIcon("查", rgba(0, 113, 231, 0.1), #0071e7);
+}
+.icon-test {
+  .wordIcon("验", rgba(0, 113, 231, 0.1), #0071e7);
+}
+.icon-blood {
+  .wordIcon("血", rgba(0, 113, 231, 0.1), #0071e7);
+}
+
+.icon-operation {
+  .wordIcon("术", rgba(0, 113, 231, 0.1), #0071e7);
+}
+.icon-nurse {
+  .wordIcon("护", rgba(0, 113, 231, 0.1), #0071e7);
+}
+.icon-meals {
+  .wordIcon("食", rgba(0, 113, 231, 0.1), #0071e7);
+}
+.icon-treatment {
+  .wordIcon("治", rgba(0, 113, 231, 0.1), #0071e7);
+}
+.icon-word {
+  .wordIcon("文", rgba(0, 113, 231, 0.1), #0071e7);
+}
+.icon-consultation {
+  .wordIcon("会", rgba(0, 113, 231, 0.1), #0071e7);
+}
+.icon-urgency {
+  .wordIcon("急", rgba(0, 113, 231, 0.1), #0071e7, 18px);
+  border-radius: 50%;
+  border: 1px solid #0071e7;
+}
+.icon-bed {
+  .wordIcon("床", rgba(0, 113, 231, 0.1), #0071e7, 18px);
+  border-radius: 50%;
+  border: 1px solid #0071e7;
+}
+.icon-out {
+  .wordIcon("外", rgba(0, 113, 231, 0.1), #0071e7, 18px);
+  border-radius: 50%;
+  border: 1px solid #0071e7;
+}
+.icon-build-in {
+  .wordIcon("自", rgba(0, 113, 231, 0.1), #0071e7, 18px);
+  border-radius: 50%;
+  border: 1px solid #0071e7;
+}
+
+.icon-skin {
+  .wordIcon("皮", rgba(0, 113, 231, 0.1), #0071e7, 18px);
+  border-radius: 50%;
+  border: 1px solid #0071e7;
+}
+.icon-dai {
+  .wordIcon("带", rgba(0, 113, 231, 0.1), #0071e7, 18px);
+  border-radius: 50%;
+  border: 1px solid #0071e7;
+}
+// 三级标题tab页样式
+.titleTab3{
+  .el-radio.is-bordered {
+    border: none;
+    border-left:none;
+    border-radius: 0;
+    padding: 5px 20px;
+    height: 24px;
+  }
+  /deep/.el-radio__input {
+    display: none;
+  }
+  /deep/.el-radio.is-bordered+.el-radio.is-bordered{
+    margin-left:0px;
+    border-left: 2px solid #1989fa;
+  }
+  /deep/.el-radio__label{
+    padding-left:0px;
+  }
+}
+.selectAttentionOperation{
+  width:859px !important;
+}
+
+.el-table__virtual-wrapper .el-table__body {
+  width: 100%;
+}
+
+.el-table--fixed__virtual-wrapper {
+  width: auto!important;
+}
+.el-table .el-table__fixed-right,.el-table,.el-table .el-table__fixed{
+  &::before{
+    background-color: transparent!important;
+  }
+}

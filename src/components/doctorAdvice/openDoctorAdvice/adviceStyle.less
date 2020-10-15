@@ -1,0 +1,284 @@
+.doctor-advice-form {
+    display: flex;
+    justify-content: space-between;
+    // justify-content: space-around;
+    flex-wrap: wrap;
+    &::after{
+      content: "";
+      display: block;
+      min-width: 340px;
+      width: 49.27%;
+      max-width: 360px;
+      height: 0px;
+    }
+    > .el-form-item {
+      min-width: 340px;
+      width: 49.27%;
+      max-width: 360px;
+    }
+    .el-form-item {
+      // min-width: 340px;
+      // width: 49.27%;
+      // max-width: 360px;
+      .el-select,
+      .el-date-editor,
+      .el-input,
+      .el-input-number {
+        // width:calc(~"(100% - 80px)");
+        width: 100%;
+      }
+      &.usage {
+        .el-select {
+          width: 40%;
+        }
+        .el-input-number {
+          margin-left: 4%;
+          width: 56%;
+          position: relative;
+          &.is-controls-right /deep/ .el-input__inner {
+            padding-right: 70px;
+          }
+          &::after {
+            content: "ml/min";
+            position: absolute;
+            font-size: 12px;
+            line-height: 32px;
+            color: rgba(0, 6, 34, 0.6);
+            top: 0px;
+            right: 25px;
+          }
+        }
+      }
+      &.excute-time {
+        .el-date-editor,
+        .el-select {
+          width: 40% !important;
+          float: left;
+          height: 32px;
+        }
+        .text {
+          // display: inline-block;
+          float: left;
+          width: 56%;
+          margin-left: 4%;
+          background: #f3f3f3;
+          border-radius: 2px;
+          font-size: 12px;
+          line-height: 32px;
+          color: #000622;
+          .textEllipsis(56%);
+        }
+      }
+      &.first-day {
+        .el-input-number {
+          position: relative;
+          &::after {
+            content: "次";
+            position: absolute;
+            font-size: 12px;
+            line-height: 32px;
+            color: rgba(0, 6, 34, 0.6);
+            top: 0px;
+            right: 30px;
+          }
+        }
+      }
+      &.order-days {
+        .el-input-number {
+          position: relative;
+          &::after {
+            content: "天";
+            position: absolute;
+            font-size: 12px;
+            line-height: 32px;
+            color: rgba(0, 6, 34, 0.6);
+            top: 0px;
+            right: 30px;
+          }
+        }
+      }
+      &.effective {
+        .el-radio-group {
+          float: left;
+          margin-right: 9px;
+          /deep/ .el-radio-button--small .el-radio-button__inner {
+            // padding: 9px 21px;
+            padding: 0;
+            width: 56px;
+            line-height: 30px;
+            text-align: center;
+          }
+        }
+        .el-checkbox {
+          float: right;
+        }
+      }
+      &.blood-type {
+        .el-select {
+          width: 30%;
+          float: left;
+        }
+        /deep/ .el-form-item {
+          margin-bottom: 0;
+          float: left;
+          width: 70%;
+          .el-form-item__label {
+            width: 60px !important;
+          }
+          .el-form-item__content {
+            margin-left: 60px !important;
+            .el-radio-group:last-child {
+              float: right;
+              margin-right: 0;
+            }
+          }
+        }
+      }
+      &.screening {
+        // margin-left: -20px;
+        margin-right: 20px;
+        /deep/ .el-form-item__label {
+          width: 100px !important;
+          font-size: 12px;
+          text-align: left;
+          padding-right: 0px;
+        }
+        /deep/ .el-form-item__content {
+          margin-left: 100px !important;
+        }
+      }
+      &.rests {
+        /deep/ .el-checkbox-group {
+          width: 23.5%;
+          float: left;
+          margin: 0 2% 0 0;
+          .el-checkbox-button.el-checkbox-button--small {
+            width: 100%;
+          }
+          .el-checkbox-button__inner {
+            padding: 0;
+            width: 100%;
+            line-height: 30px;
+            border-radius: 4px;
+          }
+          &:last-child {
+            margin: 0;
+          }
+        }
+      }
+      &.unit {
+        height: 32px;
+        .el-form-item__content {
+          position: relative;
+        }
+        .item {
+          position: absolute;
+          top: 0;
+          right: 4px;
+          font-size: 12px;
+          line-height: 32px;
+          color: rgba(0, 6, 34, 0.6);
+        }
+        /deep/ .el-input__inner {
+          padding-right: 50px;
+        }
+      }
+      // &.table {
+      //   width: 100%;
+      //   max-width: 100%;
+      //   .el-form-item__label {
+      //     display: none;
+      //   }
+      //   /deep/ .el-form-item__content {
+      //     margin-left: 0px !important;
+      //          >.searchDoctorAdvice{
+      //     padding: 10px 0;
+      //   }
+      //   }
+   
+      //   .el-table {
+      //     // .el-select {
+      //     //   width: 80px;
+      //     // }
+      //     .el-input-number {
+      //       width: 70%;
+      //       margin-right: 10px;
+      //     }
+      //   }
+      // }
+      // &.is-urgent{
+      //   width: 100%;
+      //   max-width: 100%;
+      // }
+      &.all {
+        width: 100%;
+        // flex: 1;
+        max-width: 100%;
+      }
+    }
+  }
+  .doctor-advice {
+    border: 1px solid #0071e7;
+    margin-top: 20px;
+    box-shadow: 0 1px 4px 2px rgba(165, 189, 247, 0.8);
+    padding: 0 10px;
+    box-sizing: border-box;
+    width: 100%;
+    .el-table .cell,
+    .el-table th div {
+      padding-right: 0 !important;
+    }
+    .doctorAdviceTable tr {
+      th,
+      td {
+        height: 40px;
+      }
+    }
+    .el-textarea__inner{
+      background-color: #f3f5f9;
+      border: none;
+      border-radius: 4px;
+    }
+    .el-select,
+    .el-date-editor,
+    .el-input,
+    .el-input-number {
+      .el-input__inner {
+        background: @controlBg;
+        border: none;
+      }
+      .el-input-number__increase,
+      .el-input-number__decrease {
+        width: 20px;
+      }
+    }
+    .all {
+      width: 100%;
+      .el-select {
+        width: 100%;
+      }
+    }
+    .attention{
+      .el-textarea__inner{
+        border-radius: 4px 4px 0 0;
+      }
+      .textarea-num{
+        text-align: right;
+        border-radius: 0 0 4px 4px;
+        background-color: #f3f5f9;
+        line-height: 24px;
+        padding-right: 10px;
+        .red{
+          color: red;
+        }
+      }
+    }
+    h2 {
+      font-size: 14px;
+      color: #000622;
+      padding-bottom: 15px;
+    }
+    > .searchDoctorAdvice {
+      padding: 10px 0;
+    }
+  }
