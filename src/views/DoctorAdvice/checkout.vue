@@ -392,7 +392,7 @@ export default {
     isMedicalInsuranceMsg(params) {
       return new Promise(async (resolve, reject) => {
         // let InsuranceUseFlag = false;
-        let res = await this.$Api.medicalInsuranceMsg(data);
+        let res = await this.$Api.medicalInsuranceMsg(params);
         if (res.Data) {
           this.$confirm(res.Data, "提示", {
             confirmButtonText: "确定",
