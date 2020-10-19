@@ -400,7 +400,6 @@ export default {
             showClose: false,
             closeOnClickModal: false,
             closeOnPressEscape: false,
-            type: "warning",
           })
             .then(() => {
               resolve(true);
@@ -888,7 +887,6 @@ export default {
                 HisMedId: item.HisMedId,
                 OrderType: 8,
               });
-              console.log(data.InsuranceUseFlag);
               data._edit = false;
 
               this.isAdd = this.isEdit;

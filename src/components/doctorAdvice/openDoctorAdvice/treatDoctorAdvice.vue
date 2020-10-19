@@ -43,6 +43,11 @@
           ></el-option>
         </el-select>-->
       </template>
+      <template slot="InsuranceUseFlag" slot-scope="{scope}">
+        <el-checkbox
+          v-model="scope.row.InsuranceUseFlag"
+        ></el-checkbox>
+      </template>
     </doctorAdviceTable>
 
     <slot name="search" :departmentCode="departmentCode" />

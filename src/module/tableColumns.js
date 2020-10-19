@@ -494,7 +494,7 @@ export const inspectDoctorAdviceColumns = [{
   value: "adviceName",
 },
 {
-  text: '是否是医保',
+  text: '是否使用医保',
   value: 'InsuranceUseFlag',
 },
 {
@@ -521,7 +521,7 @@ export const testDoctorAdviceColumns = [{
   editType: "text",
 },
 {
-  text: '是否是医保',
+  text: '是否使用医保',
   value: 'InsuranceUseFlag',
 },
 {
@@ -546,6 +546,10 @@ export const treatDoctorAdviceColumns = [{
 {
   text: "数量",
   value: "Unit",
+},
+{
+  text: '是否使用医保',
+  value: 'InsuranceUseFlag',
 },
 {
   text: "单价",
@@ -601,7 +605,7 @@ export const drugDoctorAdviceColumns = [{
   }
 },
 {
-  text: '是否是医保',
+  text: '是否使用医保',
   value: 'InsuranceUseFlag',
   maxWidth: 100,
 },

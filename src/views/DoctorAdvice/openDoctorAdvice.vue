@@ -98,8 +98,9 @@
           iconClass="charging"
           class="right"
           @click="chargingClick"
-          v-if="patientMsg.Status != 8 && inHosCost == 1"
+          v-if="patientMsg.Status != 8 "
         ></svg-icon>
+        <!-- && inHosCost == 1 -->
       </el-tooltip>
       <el-tooltip
         class="item"
@@ -751,7 +752,7 @@ export default {
     isMedicalInsuranceMsg(params) {
       return new Promise(async (resolve, reject) => {
         // let InsuranceUseFlag = false;
-        let res = await this.$Api.medicalInsuranceMsg(paramss);
+        let res = await this.$Api.medicalInsuranceMsg(params);
         if (res.Data) {
           this.$confirm(res.Data, "提示", {
             confirmButtonText: "确定",
@@ -759,7 +760,6 @@ export default {
             showClose: false,
             closeOnClickModal: false,
             closeOnPressEscape: false,
-            type: "warning",
           })
             .then(() => {
               resolve(true);
@@ -817,12 +817,13 @@ export default {
           SocialSecurityType: data.InsuranceCode,
         })
         .then((res) => {
+          this.$msg[res.Status?"success":"warning"](res.Message);
           if (res.Status && res.Data) {
             this.alterData = {
               showAlter: true,
               alterType: "clinicRoom",
               alterTitle: "诊间结算",
-              width: "300px",
+              width: "500px",
               childData: {
                 ...res.Data,
                 PayType: "",
@@ -876,7 +877,7 @@ export default {
           data.push({
             HisMedId: el.HisMedId,
             MedicineName: el.MedicineName,
-            ViewDrugDetailInfoUrl:el.ViewDrugDetailInfoUrl
+            ViewDrugDetailInfoUrl: el.ViewDrugDetailInfoUrl,
           });
         });
         this.$refs.contextmenu &&
@@ -1519,7 +1520,7 @@ export default {
       }, 100);
     },
     // 新增医嘱
-    add(item, index) {
+    async add(item, index) {
       console.log("add", item);
 
       if (typeof item === "string") {
@@ -1759,6 +1760,13 @@ export default {
         // data.Dose = 1;
         // data.Frequency='QD'
         data.FrequencyCode = item.ItemType === 3 ? this.FrequencyCode : this.ST;
+        if (item.ItemType === 0) {
+          data.InsuranceUseFlag = await this.isMedicalInsuranceMsg({
+            HisRegisterId: this.patientMsg.RegistId,
+            HisMedId: item.HisMedId,
+            OrderType: item.ItemType
+          });
+        }
         data.IsDeleted = false;
         data._edit = false;
         index < 0 && this.newAdviceList.push(data);
