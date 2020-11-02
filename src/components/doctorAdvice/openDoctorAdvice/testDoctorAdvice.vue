@@ -3,13 +3,15 @@
     <doctorAdviceTable
       :columns="columns"
       :tableData="tableData"
-      :type="isCheckedCharge?'expand':''"
+      :type="isCheckedCharge ? 'expand' : ''"
       :orderType="8"
-      :row-style="{cursor: 'pointer'}"
+      :row-style="{ cursor: 'pointer' }"
       :callback="callback"
     >
-      <template slot="adviceName" slot-scope="{scope}">
-        <template v-if="!scope.row._edit">{{scope.row.DictItemName}}</template>
+      <template slot="adviceName" slot-scope="{ scope }">
+        <template v-if="!scope.row._edit">{{
+          scope.row.DictItemName
+        }}</template>
         <slot
           name="change"
           :index="scope.row._index"
@@ -19,36 +21,39 @@
           v-else
         />
       </template>
-      <template slot="SampleCode" slot-scope="{scope}">
+      <template slot="SampleCode" slot-scope="{ scope }">
         <el-select
           v-model="scope.row.SampleCode"
           placeholder="请选择"
-          @change="changeSample(scope.row,$event)"
+          @change="changeSample(scope.row, $event)"
         >
           <el-option
-            v-for="(item,index) in scope.row.specimenOptions"
+            v-for="(item, index) in scope.row.specimenOptions"
             :key="item"
             :label="item"
             :value="index"
-          >{{item}}</el-option>
+            >{{ item }}</el-option
+          >
         </el-select>
       </template>
-      <template
-        slot="Price"
-        slot-scope="{scope}"
-      >{{scope.row.CheckedList| priceFilter(scope.row.ChargeItems,scope.row.Price)}}</template>
-      <template slot="InsuranceUseFlag" slot-scope="{scope}">
-        <el-checkbox
-          v-model="scope.row.InsuranceUseFlag"
-        ></el-checkbox>
+      <template slot="Price" slot-scope="{ scope }">{{
+        scope.row.CheckedList
+          | priceFilter(scope.row.ChargeItems, scope.row.Price)
+      }}</template>
+      <template slot="InsuranceUseFlag" slot-scope="{ scope }">
+        <el-checkbox v-model="scope.row.InsuranceUseFlag"></el-checkbox>
       </template>
     </doctorAdviceTable>
-    <slot name="search" :departmentCode="departmentCode" :categoryNo="categoryNo" />
+    <slot
+      name="search"
+      :departmentCode="departmentCode"
+      :categoryNo="categoryNo"
+    />
 
     <h2>共性编辑</h2>
     <el-form
       :model="commonData"
-      :rules="isVerification?rules:rulesNull"
+      :rules="isVerification ? rules : rulesNull"
       ref="inspectDoctorAdvice"
       label-position="right"
       label-width="80px"
@@ -98,7 +103,8 @@
             :key="item.Value"
             :label="item.Text"
             :value="item.Text"
-          >{{item.Text}}</el-option>
+            >{{ item.Text }}</el-option
+          >
         </el-select>
       </el-form-item>
     </el-form>
@@ -115,7 +121,7 @@ import { mapGetters } from "vuex";
 export default {
   name: "testDoctorAdvice", //检验医嘱控件
   components: {
-    doctorAdviceTable
+    doctorAdviceTable,
   },
   props: {
     tableData: {
@@ -123,47 +129,47 @@ export default {
       required: true,
       default: () => {
         return [];
-      }
+      },
     },
     commonObj: {
       type: Object,
-      required: true
+      required: true,
     },
     // 是否修改
     isChange: {
       type: Boolean,
-      default: false
+      default: false,
     },
     // 是否校验
     isVerification: {
       type: Boolean,
-      default: true
+      default: true,
     },
     //删除一个回调函数
     callback: {
       type: Function,
-      default: () => {}
+      default: () => {},
     },
     editIndex: {
       type: Number,
-      default: 0
-    }
+      default: 0,
+    },
   },
   filters: {
     priceFilter(checkArr, arr, price) {
       let num = 0;
       arr = arr || [];
-      console.log(checkArr,"checkArrs")
-      checkArr.forEach(item => {
-        arr.forEach(el => {
+      console.log(checkArr, "checkArrs");
+      checkArr.forEach((item) => {
+        arr.forEach((el) => {
           if (item === el.ChargeItemCode) {
-            num += el.Price*el.Count;
+            num += el.Price * el.Count;
           }
         });
       });
       if (!arr.length) num = price;
       return (+num).toFixed(2);
-    }
+    },
   },
   data() {
     return {
@@ -175,15 +181,15 @@ export default {
             +new Date(GetFormatDateTime("yyyy/MM/dd", new Date()) + " 00:00:00")
           );
           // return time.getTime() <= Date.now();
-        }
+        },
       },
       rules: {
         ApplyTime: [
-          { required: true, message: "请输入申请时间", trigger: "blur" }
+          { required: true, message: "请输入申请时间", trigger: "blur" },
         ],
         ExcuteDepartment: [
-          { required: true, message: "请选择科室", trigger: "change" }
-        ]
+          { required: true, message: "请选择科室", trigger: "change" },
+        ],
       },
       rulesNull: {},
       columns: testDoctorAdviceColumns,
@@ -197,13 +203,13 @@ export default {
         IsEmergency: "", //加急
         IsOtherTest: false, //外院送检
         Remark: "", //备注
-        ApplyTime: "" //申请时间
+        ApplyTime: "", //申请时间
       }, //公共数据
       // departmentOptions: [
       // ], //科室的选项
 
       specimenOptions: [], //标本选项
-      tableLength: 0
+      tableLength: 0,
     };
   },
   created() {
@@ -214,7 +220,7 @@ export default {
       : GetFormatDateTime();
 
     // this.nowTime = this.commonData.ApplyTime = GetFormatDateTime();
-    this.pickerOptions.disabledDate = time => {
+    this.pickerOptions.disabledDate = (time) => {
       return (
         time.getTime() <
         +new Date(
@@ -231,16 +237,16 @@ export default {
       departmentOptions: "public/GET_ALLDEP", //执行科室
       isCheckedCharge: "configuration/GET_ISCHECKEDCHARGE", //收费小项目是否可选
       patientMsg: "public/GET_PATIENTMSG",
-      selectArea: "home/GET_SELECTAREA" //所在区域
+      selectArea: "home/GET_SELECTAREA", //所在区域
     }),
     //备注选项
-    remarkOptions: function(value) {
+    remarkOptions: function (value) {
       return this.$store.getters["public/getDic"]("TestRemark").filter(
-        el => el.Value !== -1
+        (el) => el.Value !== -1
       );
     },
     departmentCode() {
-      let arr = this.tableData.filter(item => !item.IsDeleted);
+      let arr = this.tableData.filter((item) => !item.IsDeleted);
       return arr.length ? this.commonData.ExcuteDepartment : "";
     },
     categoryNo() {
@@ -248,15 +254,16 @@ export default {
     },
     deparmentOps() {
       let arrDep = severalGroups(this.tableData, "NewDepartmentList");
-      console.log(this.tableData, arrDep,"this.tableData",this.patientMsg);
-      if(this.$route.query.id&&this.patientMsg.RegistId){
-       this.patientMsg.RegisterInfoList.forEach(el=>{
-         if(this.patientMsg.RegistId===el.HisRegistId ){
-           !arrDep.includes(el.RegDepartmentCode)&&arrDep.push(el.RegDepartmentCode)
-         }
-       })
+      console.log(this.tableData, arrDep, "this.tableData", this.patientMsg);
+      if (this.$route.query.id && this.patientMsg.RegistId) {
+        this.patientMsg.RegisterInfoList.forEach((el) => {
+          if (this.patientMsg.RegistId === el.HisRegistId) {
+            !arrDep.includes(el.RegDepartmentCode) &&
+              arrDep.push(el.RegDepartmentCode);
+          }
+        });
       }
-  
+
       if (arrDep.length) {
         this.commonData.ExcuteDepartment = this.commonData.ExcuteDepartment
           ? this.commonData.ExcuteDepartment
@@ -264,26 +271,26 @@ export default {
       }
       let departmentList = [];
       this.$emit("changrequestId", this.commonData.ExcuteDepartment);
-        arrDep.forEach(item => {
-          this.departmentOptions.forEach(el => {
-              if (el.Code == item) {
-                departmentList.push(el);
-              }
-      });
+      arrDep.forEach((item) => {
+        this.departmentOptions.forEach((el) => {
+          if (el.Code == item) {
+            departmentList.push(el);
+          }
         });
+      });
 
       return departmentList;
-    }
+    },
   },
   watch: {
     commonObj: {
-      handler: function(val, oldVal) {
+      handler: function (val, oldVal) {
         for (const key in val) {
           this.commonData[key] = val[key];
         }
       },
       immediate: true,
-      deep: true
+      deep: true,
     },
     // tableData: {
     //   handler(val, oldValue = []) {
@@ -298,36 +305,35 @@ export default {
     // },
     editIndex: {
       handler(val) {
-        console.log(val,"tablelllllllll")
+        console.log(val, "tablelllllllll");
         this.getSampleSetList();
       },
-      immediate: true
-    }
+      immediate: true,
+    },
   },
   methods: {
     //获取单个的标本配置
-    getSampleSetList(list) {
+    getSampleSetList() {
       let data = [];
       this.tableData.forEach((item, index) => {
         data.push({
-          t:Math.random(),
+          t: Math.random(),
           Code: item.DictItemCode,
-          CategoryNo: item.ParentCategoryCode
+          CategoryNo: item.ParentCategoryCode,
         });
       });
-      this.$Api.getSampleSetList(data).then(res => {
+      this.$Api.getSampleSetList(data).then((res) => {
         if (res.Status) {
           let data = res.Data || {};
-            this.tableData.forEach(item => {
-              this.$set(item, "specimenOptions", data[item.DictItemCode]||[]);
-              // item['specimenOptions'] = data[item.DictItemCode]
-            });
-
+          this.tableData.forEach((item) => {
+            this.$set(item, "specimenOptions", data[item.DictItemCode] || []);
+            // item['specimenOptions'] = data[item.DictItemCode]
+          });
         }
       });
     },
     changeSample(row, el) {
-      this.specimenOptions.forEach(item => {
+      this.specimenOptions.forEach((item) => {
         if (item.SampleCode === el) {
           row.SampleName = item.Name;
         }
@@ -355,7 +361,7 @@ export default {
       // this.$Api.getEmergencyDepment().then(res => {
       //   this.departmentOptions = res.Data || [];
       // });
-      this.$Api.getTestSampleList({ t: new Date().getTime() }).then(res => {
+      this.$Api.getTestSampleList({ t: new Date().getTime() }).then((res) => {
         console.log("wqwwww", res);
         this.specimenOptions = res.Data || [];
       });
@@ -366,23 +372,23 @@ export default {
         this.$refs.inspectDoctorAdvice.validate((valid, obj) => {
           console.log(obj);
           if (valid) {
-            if (!this.tableData.filter(el=>!el.IsDeleted).length) {
+            if (!this.tableData.filter((el) => !el.IsDeleted).length) {
               this.$msg.info("当前没有医嘱项目，请添加后再保存！");
               resolve(false);
             }
             let doctorOrderMain = { ...this.commonData };
-            let orderId=doctorOrderMain.OrderId
-            delete doctorOrderMain.OrderId
-            this.tableData.filter(item => {
+            let orderId = doctorOrderMain.OrderId;
+            delete doctorOrderMain.OrderId;
+            this.tableData.filter((item) => {
               // if (item.CheckedList.length<item.ChildList.length) {
               // item.ChildItems=item.ChargeItems
               if (!item.ChildItems) {
                 item.ChildItems = [];
               }
-              item.ChildItems.forEach(el => {
+              item.ChildItems.forEach((el) => {
                 //  el.Id=item.Id?item.Id:null;
                 let off = true;
-                item.CheckedList.forEach(a => {
+                item.CheckedList.forEach((a) => {
                   if (el.DictItemCode === a) {
                     off = false;
                   }
@@ -397,34 +403,47 @@ export default {
             });
             doctorOrderMain.InHouseId = this.$route.query.id;
             // this.commonData.OrderType =this.tableData[0]
-            let obj={}
-            this.tableData.forEach(el=>{
-              if (el.SampleCode) {
+            let obj = {};
+            this.tableData.forEach((el) => {
+              if (el.SampleCode && el.CustomizeTestApplyRule) {
+                if (obj[el.SampleCode + el.CustomizeTestApplyRule]) {
+                  obj[el.SampleCode + el.CustomizeTestApplyRule].push(el);
+                } else {
+                  obj[el.SampleCode + el.CustomizeTestApplyRule] = [el];
+                }
+              } else if (el.SampleCode && !el.CustomizeTestApplyRule) {
                 if (obj[el.SampleCode]) {
-                obj[el.SampleCode].push(el)
+                  obj[el.SampleCode].push(el);
+                } else {
+                  obj[el.SampleCode] = [el];
+                }
+              } else if (!el.SampleCode && el.CustomizeTestApplyRule) {
+                if (obj[el.CustomizeTestApplyRule]) {
+                  obj[el.CustomizeTestApplyRule].push(el);
+                } else {
+                  obj[el.CustomizeTestApplyRule] = [el];
+                }
               } else {
-                obj[el.SampleCode]=[el]
+                if (obj.all) {
+                  obj.all.push(el);
+                } else {
+                  obj.all = [el];
+                }
               }
-              } else {
-              if (obj.all) {
-                obj.all.push(el)
-              } else {
-                obj.all=[el]
-              }
-              }
-            })
-            let arr=[]
+            });
+            let arr = [];
 
+            console.log(obj, "11111obj");
             for (const key in obj) {
               arr.push({
-                TestApplyMainModel: {...doctorOrderMain},
-                TestApplyDetailsModel: obj[key]
-              })
+                TestApplyMainModel: { ...doctorOrderMain },
+                TestApplyDetailsModel: obj[key],
+              });
             }
-            if(orderId){
-              arr[0].TestApplyMainModel.OrderId=orderId
+            if (orderId) {
+              arr[0].TestApplyMainModel.OrderId = orderId;
             }
-            console.log(arr,'dada');
+            console.log(arr, "dada");
             resolve(arr);
           } else {
             resolve(false);
@@ -435,8 +454,8 @@ export default {
     },
     selectRequestId(val) {
       this.$emit("changrequestId", val);
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang='less'>

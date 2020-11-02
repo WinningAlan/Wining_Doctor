@@ -11,7 +11,7 @@ export const setSession = (name, content) => {
             return false;
         }
     }
-    window.sessionStorage.setItem(name, content)
+    window.sessionStorage.setItem(name, content);
     if (window.StoreKeys.indexOf(name) < 0) window.StoreKeys.push(name)
     return true
 }

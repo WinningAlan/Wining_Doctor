@@ -377,8 +377,8 @@ export default {
         let res = await this.$Api.medicalInsuranceMsg(params);
         if (res.Data) {
           this.$confirm(res.Data, "提示", {
-            confirmButtonText: "确定",
-            cancelButtonText: "取消",
+            confirmButtonText: "医保",
+            cancelButtonText: "自费",
             showClose: false,
             closeOnClickModal: false,
             closeOnPressEscape: false,
@@ -979,14 +979,15 @@ export default {
             let TemplateIds = "";
             let len = boj.OrderList.length;
             let prescriptionInfo = res.Data.PrescriptionInfo || [];
-            prescriptionInfo.forEach((el) => {
+            let OrderInfos = res.Data.OrderInfos || []
+            prescriptionInfo.length && prescriptionInfo.forEach((el) => {
               strId += el.PrescriptionMasterNo + ",";
               ObjectTypes +=
                 printObjectType["CheckLargeEquipment"].objectType + ",";
               TemplateIds +=
                 printObjectType["CheckLargeEquipment"].templateId + ",";
             });
-            boj.OrderList.forEach((item, index) => {
+            OrderInfos.length && boj.OrderList.forEach((item, index) => {
               strId += item;
               if (len - 1 != index) {
                 strId += ",";

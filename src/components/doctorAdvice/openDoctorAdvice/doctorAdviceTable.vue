@@ -229,7 +229,11 @@ export default {
 };
 </script>
 
-<style scoped lang='less'>
+<style  lang='less'>
+.el-table__body tr.current-row > td {
+  background-color: #7fbcee !important;
+  /* color: #f19944; */ /* 设置文字颜色，可以选择不设置 */
+}
 .doctorAdviceTable {
   margin-top: 0;
   /deep/ .el-table__body tr.el-table__row {

@@ -149,7 +149,7 @@ export default {
       selectArea: "home/GET_SELECTAREA", //所在区域
       user: "public/GET_USER",
       feeTypeList: "public/GET_FEETYPELIST", //所有费别
-      feeTypeCode:"doctoradvice/GET_FEETYPECODE",
+      // feeTypeCode:"doctoradvice/GET_FEETYPECODE",
       isTray: "configuration/GET_ISTRAY",
       medicareList: "configuration/GET_MEDICARELIST",
     }),
@@ -177,13 +177,13 @@ export default {
         ? this.user.Departments
         : this.allDepartments;
       if (!this.commonData.RegisterDepCode) {
-        this.commonData.RegisterDepCode = data[0] ? data[0].Code : "";
+        this.commonData.RegisterDepCode = this.patientMsg.Department?this.patientMsg.Department:(data[0] ? data[0].Code : "");
       }
       return data;
     },
     // 卡号是否只读
     isDisabled() {
-      let type=this.feeTypeCode||this.patientMsg.SocialSecurityCode_default
+      let type=this.patientMsg.SocialSecurityCode_default
       return !this.medicareList.includes(type)
     },
     cardNumber: {
@@ -235,8 +235,9 @@ export default {
       handler: function(val, oldVal) {
         if (val) {
           // console.log(this.feeTypeCode,"this.feeTypeCode")
+          console.log(this.patientMsg.SocialSecurityCode_default,"this.patientMsg.SocialSecurityCode_default")
           this.getEmergencyDepment();
-          this.commonData.FeeType = this.feeTypeCode||this.patientMsg.SocialSecurityCode_default;
+          this.commonData.FeeType = this.patientMsg.SocialSecurityCode_default;
           this.commonData.feeTypeText =  this.feeTypeList.find(el=>el.Code===this.commonData.FeeType).Name;
           this.commonData.SocialSecurityNumber = this.patientMsg.SocialSecurityNumber;
           this.commonData.CardNumber = this.patientMsg.CardNumber;
@@ -357,7 +358,7 @@ if (!this.cardNumber) return this.$msg.warning("请填写卡号或身份证！")
               );
               // clearInterval(this.readTimer);
               this.$msg.success("挂号成功！");
-              this.$store.commit("doctoradvice/SET_FEETYPECODE","")
+              // this.$store.commit("doctoradvice/SET_FEETYPECODE","")
               this.$emit("readChang");
            
             }
@@ -381,8 +382,9 @@ if (!this.cardNumber) return this.$msg.warning("请填写卡号或身份证！")
     },
     // 改变费别
     changeFeeType(val) {
+      console.log(this.patientMsg.SocialSecurityCode_default)
       this.isSelfpaying = val;
-      this.commonData.FeeType = this.feeTypeCode||this.patientMsg.SocialSecurityCode_default;
+      this.commonData.FeeType = this.patientMsg.SocialSecurityCode_default;
       this.commonData.feeTypeText =  this.feeTypeList.find(el=>el.Code===this.commonData.FeeType).Name;
       val &&
         this.feeTypeList.forEach(el => {

@@ -983,12 +983,14 @@ export default {
         return
       }
       this.usageList = this.usageOptions.filter(item => {
+          console.log( this.usageList," this.usageList")
         let hasCode=item.InputCode&&item.InputCode.toLowerCase().indexOf(val.toLowerCase()) > -1
         return (
            hasCode||item.Text.indexOf(val.toLowerCase()) > -1 ||
            item.Value.indexOf(val.toLowerCase()) > -1
         );
       });
+      console.log( this.usageList," this.usageList")
     }
   }
 };

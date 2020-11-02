@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2020-10-15 13:13:38
+ * @LastEditTime: 2020-10-30 13:06:29
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: \Doctor\src\main.js
+ */
 import Vue from 'vue';
 
 // import './assets/styles/font-awesome.min.css'
@@ -47,18 +55,18 @@ Vue.filter("ageFilter", ageFilter)
 Vue.use(print)
 window.URLCONFIG = getSession("urlConfig") || {
 
-  "Master": "http://172.16.0.161:17085",
-  "DataPlatForm": "http://172.16.0.161:17082",
-  "Nursing": "http://172.16.0.161:17086",
-  "Triage": "http://172.16.0.161:17088",
-  "Emr": "http://172.16.0.161:17084",
-  "ChestPain": "http://172.16.0.161:17082",
-  "DoctorAdvicePrint": "http://172.16.0.161:8080",
-  "Stroke": "http://172.16.0.161:18090",
-  "Quality": "http://172.16.0.161:17087",
-  "Trauma": "http://172.16.0.161:17090",
-  "Doctor": "http://172.16.0.161:17083",
-  "Consultation": "http://172.16.0.161:17081"
+  ChestPain: "http://172.16.0.161:17082",
+Consultation: "http://172.16.0.161:17081",
+DataPlatForm: "http://172.16.0.161:17082",
+Doctor: "http://172.16.0.161:17083",
+DoctorAdvicePrint: "http://172.16.0.161:8080",
+Emr: "http://172.16.0.161:17084",
+Master: "http://172.16.0.161:17085",
+Nursing: "http://172.16.0.161:17086",
+Quality: "http://172.16.0.161:17087",
+Stroke: "http://172.16.0.161:18090",
+Trauma: "http://172.16.0.161:17090",
+Triage: "http://172.16.0.161:17088"
 
 
 }

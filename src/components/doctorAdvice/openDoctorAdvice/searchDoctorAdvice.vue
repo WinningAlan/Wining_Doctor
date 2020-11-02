@@ -59,7 +59,7 @@
             :class="{hidden:ii.m_Item1!=='Medication'}"
             :style="{color:item.StockNum>0?'#0f49ed':'#f58b8b'}"
             style="margin-right:5px;"
-          >{{item.StockNum>0?((item.StockNum>999?'999+':item.StockNum)+item.DrugStoreUnit):'无库存'}}</span>
+          >{{item.StockNum>0?((item.StockNum>999?`999${item.DrugStoreUnit}+`:`${item.StockNum}${item.DrugStoreUnit}`)):'无库存'}}</span>
         </el-option>
       </el-option-group>
     </el-select>

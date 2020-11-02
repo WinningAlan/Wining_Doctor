@@ -98,7 +98,7 @@
           iconClass="charging"
           class="right"
           @click="chargingClick"
-          v-if="patientMsg.Status != 8 "
+          v-if="patientMsg.Status != 8"
         ></svg-icon>
         <!-- && inHosCost == 1 -->
       </el-tooltip>
@@ -755,8 +755,8 @@ export default {
         let res = await this.$Api.medicalInsuranceMsg(params);
         if (res.Data) {
           this.$confirm(res.Data, "提示", {
-            confirmButtonText: "确定",
-            cancelButtonText: "取消",
+            confirmButtonText: "医保",
+            cancelButtonText: "自费",
             showClose: false,
             closeOnClickModal: false,
             closeOnPressEscape: false,
@@ -817,7 +817,7 @@ export default {
           SocialSecurityType: data.InsuranceCode,
         })
         .then((res) => {
-          this.$msg[res.Status?"success":"warning"](res.Message);
+          this.$msg[res.Status ? "success" : "warning"](res.Message);
           if (res.Status && res.Data) {
             this.alterData = {
               showAlter: true,
@@ -1102,12 +1102,14 @@ export default {
             let ObjectTypes = "";
             let TemplateIds = "";
             specialDrugArr.forEach((item) => {
-              hisorderIds += item.HisOrderId + ",";
+              if(item.IsPrint){
+                  hisorderIds += item.HisOrderId + ",";
               RegisterId += item.RegisterId + ",";
               ObjectTypes +=
                 printObjectType[item.PrescriptionName].objectType + ",";
               TemplateIds +=
                 printObjectType[item.PrescriptionName].templateId + ",";
+              }
             });
             if (hisorderIds != "") {
               clearTimeout(this.timer);
@@ -1309,6 +1311,7 @@ export default {
           ) {
             data.Count = row.OrderDetails[0].Count;
             data.Unit = row.OrderDetails[0].Unit;
+            data.InsuranceUseFlag = row.OrderDetails[0].InsuranceUseFlag;
           }
           this.newAdviceList.push(data);
           this.commonObj = {};
@@ -1764,7 +1767,7 @@ export default {
           data.InsuranceUseFlag = await this.isMedicalInsuranceMsg({
             HisRegisterId: this.patientMsg.RegistId,
             HisMedId: item.HisMedId,
-            OrderType: item.ItemType
+            OrderType: item.ItemType,
           });
         }
         data.IsDeleted = false;
@@ -1830,6 +1833,7 @@ export default {
                     ? [...new Set(item.Department.split(","))]
                     : [];
                   data["ParentCategoryCode"] = item.CategoryNo;
+                  data.CustomizeTestApplyRule = item.CustomizeTestApplyRule
                   arr.forEach((el) => {
                     data.CheckedList.push(el.ChargeItemCode);
                     data.ChildItems.push({
@@ -2519,19 +2523,27 @@ export default {
       // 处方、治疗、输液单
       printObj.PrescriptionInfo.forEach((item) => {
         if (item.TemplateName == "Ordinary") {
-          ordinaryStr += item.PrescriptionMasterNo + ",";
-          objectTypes += printObjectType["prescription"].objectType + ",";
-          templateIds += printObjectType["prescription"].templateId + ",";
+          if (item.IsPrint) {
+            ordinaryStr += item.PrescriptionMasterNo + ",";
+            objectTypes += printObjectType["prescription"].objectType + ",";
+            templateIds += printObjectType["prescription"].templateId + ",";
+          }
         } else if (item.TemplateName == "Treatment") {
-          ordinaryStr += item.PrescriptionMasterNo + ",";
-          objectTypes += printObjectType["treatDoctorAdvice"].objectType + ",";
-          templateIds += printObjectType["treatDoctorAdvice"].templateId + ",";
+          if (item.IsPrint) {
+            ordinaryStr += item.PrescriptionMasterNo + ",";
+            objectTypes +=
+              printObjectType["treatDoctorAdvice"].objectType + ",";
+            templateIds +=
+              printObjectType["treatDoctorAdvice"].templateId + ",";
+          }
         } else if (item.TemplateName == "CheckLargeEquipment") {
-          ordinaryStr += item.PrescriptionMasterNo + ",";
-          objectTypes +=
-            printObjectType["CheckLargeEquipment"].objectType + ",";
-          templateIds +=
-            printObjectType["CheckLargeEquipment"].templateId + ",";
+          if (item.IsPrint) {
+            ordinaryStr += item.PrescriptionMasterNo + ",";
+            objectTypes +=
+              printObjectType["CheckLargeEquipment"].objectType + ",";
+            templateIds +=
+              printObjectType["CheckLargeEquipment"].templateId + ",";
+          }
         } else {
           preNumStr += item.PrescriptionMasterNo + ",";
         }

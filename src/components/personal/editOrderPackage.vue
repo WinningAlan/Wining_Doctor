@@ -755,6 +755,7 @@ export default {
                   data["NewDepartmentList"] =item.Department? [
                     ...new Set(item.Department.split(","))
                   ]:[];
+                  data.CustomizeTestApplyRule = item.CustomizeTestApplyRule
                   data["ParentCategoryCode"] = item.CategoryNo;
                   arr.forEach(el => {
                     data.CheckedList.push(el.ChargeItemCode);

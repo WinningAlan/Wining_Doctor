@@ -34,7 +34,7 @@
           </div>
         </li>
         <li>
-          <span style="color:red; width:0" v-show="!IDNum">*</span>
+          <!-- <span style="color:red; width:0" v-show="!IDNum">*</span> -->
           <span>身份证号：</span>
           <el-input placeholder="请输入患者身份证号" v-model="specialDrugMessage.IDCardNumber" v-if="!IDNum"
           @change="changePatIdNum" :disabled="!enable"></el-input>
@@ -196,10 +196,11 @@ export default {
           this.$msg.warning(regData.message);
           return;
         }
-      }else{
-        this.$msg.warning('请填写患者身份证号')
-        return
       }
+      // else{
+      //   this.$msg.warning('请填写患者身份证号')
+      //   return
+      // }
       let params = this.specialDrugMessage;
       //params.OrderIds = arr
       let res = await this.$Api.submitSpecialDrugTake(params);

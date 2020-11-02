@@ -541,7 +541,7 @@ export default {
         // 检查
         case 3:
           data.forEach((item) => {
-            str += `${item.Content}；`;
+            str += `${item.ItemName}：${item.Content}；`;
           });
           break;
         // 检验

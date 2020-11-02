@@ -395,8 +395,8 @@ export default {
         let res = await this.$Api.medicalInsuranceMsg(params);
         if (res.Data) {
           this.$confirm(res.Data, "提示", {
-            confirmButtonText: "确定",
-            cancelButtonText: "取消",
+            confirmButtonText: "医保",
+            cancelButtonText: "自费",
             showClose: false,
             closeOnClickModal: false,
             closeOnPressEscape: false,
@@ -843,7 +843,7 @@ export default {
                   return;
                 }
               }
-              this.editIndex = Math.random();
+             
               let obj = this.specimenOptions[0] || {};
               let sampleNameList = [];
               if (item.PreSampleCode) {
@@ -862,6 +862,7 @@ export default {
               data["SampleName"] = sampleNameList || [];
               data.DictItemCode = item.HisMedId;
               data.ChargeItems = arr;
+              data.CustomizeTestApplyRule = item.CustomizeTestApplyRule;
               data.CheckedList = [];
               data.ChildItems = [];
               data["NewDepartmentList"] = item.Department
@@ -888,7 +889,7 @@ export default {
                 OrderType: 8,
               });
               data._edit = false;
-
+              this.editIndex = Math.random();
               this.isAdd = this.isEdit;
               if (index < 0) {
                 this.oneTabs.TestApplyDetailsModel.push(data);
@@ -931,7 +932,7 @@ export default {
                   // }
                 }
                 // let obj = this.specimenOptions[0] || {};
-                this.editIndex = Math.random();
+                
                 let sampleName = "";
                 if (item.PreSampleCode) {
                   for (let j = 0; j < this.specimenOptions.length; j++) {
@@ -948,6 +949,7 @@ export default {
                   : "";
                 data["SampleName"] = sampleName || "";
                 data.DictItemCode = item.HisMedId;
+                data.CustomizeTestApplyRule = item.CustomizeTestApplyRule
                 data.ChargeItems = arr;
                 data.CheckedList = [];
                 data.ChildItems = [];
@@ -976,7 +978,7 @@ export default {
                   OrderType: 8,
                 });
                 data._edit = false;
-
+                this.editIndex = Math.random();
                 this.isAdd = this.isEdit;
                 if (this.tabls.length === 1 && this.tabls[0].Id === -1) {
                   this.tabls[0].TestApplyDetailsModel.push(data);
@@ -1209,7 +1211,8 @@ export default {
             let ObjectTypes = "";
             let TemplateIds = "";
             let len = boj.OrderList.length;
-            boj.OrderList.forEach((item, index) => {
+            let OrderInfos = res.Data.OrderInfos || []
+            OrderInfos.length && boj.OrderList.forEach((item, index) => {
               strId += item;
               if (len - 1 != index) {
                 strId += ",";
